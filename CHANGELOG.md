@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Saberton1/ballsdex-autocatcher/compare/v1.0.0...v1.0.1) (2025-01-14)
+
+
+### Bug Fixes
+
+* **balls:** Updated the balls with the new version ([d217633](https://github.com/Saberton1/ballsdex-autocatcher/commit/d21763324ef7d9c22e7f302f55ca7da944186b39))
+
 # 1.0.0 (2025-01-14)
 
 

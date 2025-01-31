@@ -80,7 +80,9 @@ Now wait for the text (USERNAME is ready) and then your selfbot is online and ca
 Dont forget to star ⭐
 
 <h1 align="center">💡 Basic Farming Setup.</h1>
-Join https://discord.gg/rA78hEaKPs for more configs!
+
+<h2 align="center">Join https://discord.gg/rA78hEaKPs for more configs!</h2>
+
 
 1. Create an alternate Discord account (alt) for extra safety, otherwise use on your main.
 2. Setup 20 servers:

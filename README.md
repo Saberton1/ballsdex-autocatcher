@@ -79,7 +79,7 @@ node index.js --legacy
 Now wait for the text (USERNAME is ready) and then your selfbot is online and catching countryballs automatically.<br>
 Dont forget to star ⭐
 
-<h1 align="center">💡 Basic Farming Setup. Join [(Ballsdex Autocatcher Hub)](https://discord.gg/rA78hEaKPs) for more configs!</h1>
+<h1 align="center">💡 Basic Farming Setup. Join https://discord.gg/rA78hEaKPs for more configs!</h1>
 
 1. Create an alternate Discord account (alt) for extra safety, otherwise use on your main.
 2. Setup 20 servers:

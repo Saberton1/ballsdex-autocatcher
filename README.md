@@ -79,18 +79,19 @@ node index.js --legacy
 Now wait for the text (USERNAME is ready) and then your selfbot is online and catching countryballs automatically.<br>
 Dont forget to star ⭐
 
-<h1 align="center">💡 How to Farm Balls with 100% Efficiency and 100% Safety</h1>
+<h1 align="center">💡 Basic Farming Setup. Join [(Ballsdex Autocatch Hub)](https://discord.gg/rA78hEaKPs) for more configs!</h1>
 
-1. Create an alternate Discord account (alt).
-2. Set up 100 servers using the following template:
-   - **Name**: "Farm Server"
-   - **Channels**: "General"
-3. Add the Ballsdex bot, 3 bots from [Shapes Inc](https://platform.shapes.inc/) (The server count must be at least 5)
-4. Join all 100 servers with your main account.
-5. Configure Ballsdex and activate the Shape Inc bots to send messages in the channel whenever you send a message.
-6. In the autocatcher's config, set "Farm Server" as the target for farming.
+1. Create an alternate Discord account (alt) for extra safety, otherwise use on your main.
+2. Setup 20 servers:
+   - **Name**: "Farm Server" (Name it however you want!)
+   - **Channels**: "General" (For simplicity)
+2.5. Use discord's template system to save the name and channel name!
+3. Make an alt and create the 20 servers on it (THIS IS A VERY IMPORTANT PART, IF U CREATE THE SERVERS ON THE ACCOUNT YOU'RE CATCHING WITH YOU WILL GET BLACKLISTED FOR FARMING)
+4. Join all 20 servers with your catching account.
+5. Configure Ballsdex.
+6. In the autocatcher's config, set "Farm Server" (or the server name u set) as the target for farming. (Beware that choosing "Farm Server" as the server's name might be suspicious)
 7. Run the autocatcher.
-(It's important to note that the servers need to be 5 days old before ballsdex will start spawning fast)
+Disclaimer: The servers need to be 5 days old before ballsdex will start spawning every 60 minutes.
 
 With this setup, you can farm countryballs efficiently and safely!
 

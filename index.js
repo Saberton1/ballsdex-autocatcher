@@ -20,7 +20,7 @@ client.config = require('./config.js')
 let balls = 0;
 
 function getRandomOffset() {
-    return Math.floor(Math.random() * 2 * 60 * 60 * 1000);
+    return Math.floor(Math.random() * 2 * 60 * 60 * 1000); // 0-2 hours in ms
 }
 
 client.once("ready", async (c) => {
@@ -28,62 +28,61 @@ client.once("ready", async (c) => {
     logger.success(`Logged in as ${c.user.username}`);
 
     if (client.config.farmServers.length > 0) {
-        const minFarmTime = client.config.farmSession[0];
-        const maxFarmTime = client.config.farmSession[1];
+        const minFarmTime = client.config.sessionFarm[0];
+        const maxFarmTime = client.config.sessionFarm[1];
 
         const scriptStartTime = new Date();
-        const randomOffset = getRandomOffset();
-        const startDate = new Date(scriptStartTime.getTime() + randomOffset);
+        const initialRandomOffset = getRandomOffset();
+        const firstSessionStart = new Date(scriptStartTime.getTime() + initialRandomOffset);
 
-        logger.info(`Farming session will start at ${startDate.toLocaleTimeString()}.`);
+        logger.info(`First farming session will start at ${firstSessionStart.toLocaleTimeString()}`);
 
         const startFarming = () => {
+            const sessionStartTime = new Date();
             const randomDuration = getRandomFarmDuration(minFarmTime, maxFarmTime);
-            logger.info(`Farming session started. Will farm for ${randomDuration / (60 * 60 * 1000)} hours.`);
+            logger.info(`Farming session started. Will farm for ${randomDuration / (60 * 60 * 1000)} hours`);
 
             farm(client);
             const intervalId = setInterval(() => farm(client), client.config.farmSleepTime || 60 * 1000);
 
             setTimeout(() => {
                 clearInterval(intervalId);
-                logger.info(`Farming session ended.`);
-                scheduleNextSession();
+                logger.info(`Farming session ended after ${randomDuration / (60 * 60 * 1000)} hours`);
+                scheduleNextSession(sessionStartTime);
             }, randomDuration);
         };
 
-        const scheduleNextSession = () => {
-            const nextRandomOffset = getRandomOffset();
-            const nextStartDate = new Date(scriptStartTime.getTime() + nextRandomOffset);
-            logger.info(`Next farming session scheduled to start at ${nextStartDate.toLocaleTimeString()}.`);
+        const scheduleNextSession = (previousSessionStart) => {
+            const nextDayBase = new Date(previousSessionStart.getTime() + 24 * 60 * 60 * 1000);
+            const nextDayOffset = getRandomOffset();
+            const nextSessionStart = new Date(nextDayBase.getTime() + nextDayOffset);
 
-            const intervalId = setInterval(() => {
-                const now = new Date();
-                if (now.getHours() === nextStartDate.getHours() && now.getMinutes() === nextStartDate.getMinutes()) {
-                    clearInterval(intervalId);
-                    startFarming();
-                }
-            }, 60 * 1000);
+            const timeUntilNext = nextSessionStart.getTime() - Date.now();
+            
+            if (timeUntilNext > 0) {
+                logger.info(`Next farming session scheduled for ${nextSessionStart.toLocaleTimeString()} tomorrow`);
+                setTimeout(startFarming, timeUntilNext);
+            } else {
+                logger.info('Next farming session scheduled immediately');
+                startFarming();
+            }
         };
 
-        const initialWaitTime = startDate.getTime() - scriptStartTime.getTime();
-        setTimeout(() => {
+        // Start first session
+        const initialWait = firstSessionStart.getTime() - Date.now();
+        if (initialWait > 0) {
+            setTimeout(startFarming, initialWait);
+        } else {
             startFarming();
-        }, initialWaitTime);
+        }
     }
 });
 
 function getRandomFarmDuration(minHours, maxHours) {
-    const minMilliseconds = minHours * 60 * 60 * 1000;
-    const maxMilliseconds = maxHours * 60 * 60 * 1000;
-    return Math.floor(Math.random() * (maxMilliseconds - minMilliseconds + 1)) + minMilliseconds;
+    const minMs = minHours * 60 * 60 * 1000;
+    const maxMs = maxHours * 60 * 60 * 1000;
+    return Math.floor(Math.random() * (maxMs - minMs)) + minMs;
 }
-
-
-setInterval(async () => {
-    const uptime = process.uptime()
-    const ballsPerHour = Math.floor(balls / (uptime / 60 / 60))
-    logger.info(`Balls per hour: ${ballsPerHour}`)
-}, 30 * 60 * 1000);
 
 client.on("messageCreate", async (message) => {
     if (

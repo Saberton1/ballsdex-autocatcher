@@ -35,8 +35,8 @@ module.exports = {
     // Time to sleep after sending a message to all of the servers (miliseconds)
     farmSleepTime: 920000,
 
-    // Extra wait time for clicking the button on Ballsdex balls
-    timeout: [500, 1000],
+    // Extra wait time for clicking the button on Ballsdex balls. (higher for safety)
+    timeout: [2000, 4000],
 
     // Change this based on your activity catching balls, this will farm between 6 and 10 hours everyday starting when u activated the autocatcher
     "farmSession": [6, 10],
@@ -96,5 +96,5 @@ module.exports = {
     // The stored information is not available to the public and won't be shared with anyone
     dashboardToken: '', // Obtainable from autocatcher.xyz - leave empty if u don't need it
 
-    forceReturnBestMatch: false, // dont change this unless u know what u r doing
+    forceReturnBestMatch: false, // dev settings, change your button timeout to at least 5 seconds, use at your own risk!
 }

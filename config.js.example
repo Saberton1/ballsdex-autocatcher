@@ -1,5 +1,6 @@
 module.exports = {
-    token: "YourDiscordAccountToken", // video tutorial: https://youtu.be/RlQTHTncw2Y
+    token: ["YourDiscordAccountToken"], // video tutorial: https://youtu.be/RlQTHTncw2Y
+    // Use more accounts for better rates, separate servers are recommended
 
     // Session farming configuration (5-8 hours daily with random start time)
     sessionFarm: [5, 10], // Min and max farming hours per session

@@ -95,8 +95,10 @@ Dont forget to star ⭐
 6. In the autocatcher's config, set "Farm Server" (or the server name u set) as the target for farming. (Beware that choosing "Farm Server" as the server's name might be suspicious)
 7. Run the autocatcher.
 Disclaimer: The servers need to be 5 days old before ballsdex will start spawning every 60 minutes.
+Warning: Anything above 20 servers is DANGEROUS, it might flag your account to mods and get yourself listed, safety first!
 
 With this setup, you can farm countryballs efficiently and safely!
+Happy Autocatching!
 
 <h2 align="center">🤝 Contributors</h2>
 <p align="center"> 
